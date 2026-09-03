@@ -1,19 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Text, Pressable} from 'react-native';
+
+
+
+function Field({label,})
+{
+  return(
+  <View>
+    <TextInput style = { {borderColor: 'white', borderWidth: 1, margin: 10, color: 'white',} } placeholder={label}></TextInput>
+  </View>
+  )
+}
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const fields = [
+    'Username',
+    'Password',
+  ]
+
+   return (
+      <View style={[styles.container ,{alignItems: 'center',}] }> 
+  
+        {fields.map(f => <Field label={f}/>)}
+
+        <Button title='login' color={"orange"}/>
+        
+        <Pressable>
+        <Text style={ {color: 'blue',marginTop: 50} }>Sign up!</Text>
+        </Pressable>
+  
+      </View>
+    )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#377e7f',
     alignItems: 'center',
     justifyContent: 'center',
   },
