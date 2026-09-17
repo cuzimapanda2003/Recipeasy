@@ -19,18 +19,18 @@ export default function RecettePage() {
 
       <TextInput
         placeholderTextColor='white'
-        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 50, width: 350, paddingLeft: 5 }}
+        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 50, maxHeight: '5%', width: 350,maxWidth: '80%', paddingLeft: 5 }}
         placeholder='Name'
       />
 
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Text style={{ color: 'white' }}>Duration : </Text>
-        <Picker style={{ color: 'white', width: 100, backgroundColor: '#377e7f' }}>
+        <Picker style={{ color: 'white', width: 110,maxWidth: '35%', backgroundColor: '#377e7f' }}>
           <Picker.Item label="0h" value="1" />
           <Picker.Item label="1h" value="2" />
         </Picker>
         <Text style={{ color: 'white' }}> : </Text>
-        <Picker style={{ color: 'white', width: 120, backgroundColor: '#377e7f' }}>
+        <Picker style={{ color: 'white', width: 110,maxWidth: '35%', backgroundColor: '#377e7f' }}>
           <Picker.Item label="0mins" value="1" />
           <Picker.Item label="1mins" value="2" />
           <Picker.Item label="2mins" value="3" />
@@ -42,7 +42,7 @@ export default function RecettePage() {
         placeholderTextColor='white'
         multiline={true}
         textAlignVertical='top'
-        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 500, width: 350, paddingLeft: 5 }}
+        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 500, maxHeight: '80%' ,width: 350,maxWidth: '80%', paddingLeft: 5 }}
         placeholder='Description'
       />
 
