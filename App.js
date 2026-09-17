@@ -8,9 +8,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={[styles.container, { alignItems: 'center' }]}>
-        <LoginPage />
+        {/* <LoginPage /> */}
         {/* <SignupPage /> */}
-        {/* <RecettePage /> */}
+        <RecettePage />
       </SafeAreaView>
     </SafeAreaProvider>
   );

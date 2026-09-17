@@ -5,11 +5,13 @@ import { styles } from '../styles';
 
 export default function RecettePage() {
 
-  const options = [
-    { id: '1', label: 'Breakfast', value: '1', color: 'white', labelStyle: { color: 'white' } },
-    { id: '2', label: 'Lunch', value: '2', color: 'white', labelStyle: { color: 'white' } },
-    { id: '3', label: 'Dinner', value: '3', color: 'white', labelStyle: { color: 'white' } },
-  ];
+  const options = ['Breakfast', 'Lunch', 'Dinner'].map((label, index) => ({
+  id: String(index + 1),
+  label: label,
+  value: String(index + 1),
+  color: 'white',
+  labelStyle: { color: 'white' },
+  }));
 
   return (
     <View style={[styles.container, { justifyContent: 'top' }]}>
