@@ -2,39 +2,45 @@ import { View, TextInput, Button, Text } from 'react-native';
 import RadioGroup from 'react-native-radio-buttons-group';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from '../styles';
+import { useState } from 'react';
 
-export default function RecettePage() {
-
-  const options = ['Breakfast', 'Lunch', 'Dinner'].map((label, index) => ({
+const options = ['Breakfast', 'Lunch', 'Dinner'].map((label, index) => ({
   id: String(index + 1),
   label: label,
   value: String(index + 1),
   color: 'white',
   labelStyle: { color: 'white' },
-  }));
+}));
+
+
+export default function RecettePage({navigation}) {
+
+  const [selectedId, setSelectedId] = useState();
 
   return (
-    <View style={[styles.container, { justifyContent: 'top' }]}>
-      <RadioGroup radioButtons={options} layout='row' />
+    
+    <View style={[styles.container, { justifyContent: 'flex-start' }]}>
+
+      <RadioGroup radioButtons={options} onPress={setSelectedId} selectedId={selectedId} layout='row'/>
 
       <TextInput
         placeholderTextColor='white'
-        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 50, maxHeight: '5%', width: 350,maxWidth: '80%', paddingLeft: 5 }}
+        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 50, maxHeight: '5%', width: 350,maxWidth: '80%', paddingLeft: 5,  color: 'white' }}
         placeholder='Name'
       />
 
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Text style={{ color: 'white' }}>Duration : </Text>
         <Picker style={{ color: 'white', width: 110,maxWidth: '35%', backgroundColor: '#377e7f' }}>
-          <Picker.Item label="0h" value="1" />
-          <Picker.Item label="1h" value="2" />
+          {Array.from({ length: 13 }, (_, i) => (
+              <Picker.Item key={i} label={`${i}h`} value={i} />
+          ))}
         </Picker>
         <Text style={{ color: 'white' }}> : </Text>
         <Picker style={{ color: 'white', width: 110,maxWidth: '35%', backgroundColor: '#377e7f' }}>
-          <Picker.Item label="0mins" value="1" />
-          <Picker.Item label="1mins" value="2" />
-          <Picker.Item label="2mins" value="3" />
-          <Picker.Item label="3mins" value="4" />
+            {Array.from({ length: 60 }, (_, i) => (
+              <Picker.Item key={i} label={`${i}mins`} value={i} />
+            ))}
         </Picker>
       </View>
 
@@ -42,12 +48,12 @@ export default function RecettePage() {
         placeholderTextColor='white'
         multiline={true}
         textAlignVertical='top'
-        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 500, maxHeight: '80%' ,width: 350,maxWidth: '80%', paddingLeft: 5 }}
+        style={{ borderColor: 'white', borderWidth: 1, margin: 10, height: 500, maxHeight: '80%' ,width: 350,maxWidth: '80%', paddingLeft: 5,  color: 'white' }}
         placeholder='Description'
       />
 
       <View style={{ paddingTop: 50 }}>
-        <Button title='save' color={'orange'} />
+        <Button title='save' color={'orange'} onPress={() => navigation.popTo('recipe list')} />
       </View>
     </View>
   );

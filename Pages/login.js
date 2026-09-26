@@ -1,6 +1,7 @@
 import { View, TextInput, Button, Text, Pressable } from 'react-native';
 import { styles } from '../styles';
 
+
 function Field({ label }) {
   return (
     <TextInput
@@ -11,7 +12,7 @@ function Field({ label }) {
   );
 }
 
-export default function LoginPage() {
+export default function LoginPage({navigation}) {
   const fields = ['Username', 'Password'];
   return (
     <View style={[styles.container, { alignItems: 'center' }]}>
@@ -19,9 +20,9 @@ export default function LoginPage() {
         {fields.map((f, i) => <Field key={i} label={f} />)}
       </View>
       <View style={{ paddingTop: 15 }}>
-        <Button title='login' color={'orange'} />
+        <Button title='login' color={'orange'} onPress={() => navigation.navigate('recipe list')} />
       </View>
-      <Pressable>
+      <Pressable onPress={() => navigation.navigate('singup')}>
         <Text style={{ color: 'blue', marginTop: 50 }}>Sign up!</Text>
       </Pressable>
     </View>

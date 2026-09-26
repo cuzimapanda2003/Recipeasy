@@ -11,7 +11,7 @@ function Field({ label }) {
   );
 }
 
-export default function SignupPage() {
+export default function SignupPage({navigation}) {
   const fields = ['Username', 'Password', 'Password confirmation'];
   return (
     <View style={[styles.container, { alignItems: 'center' }]}>
@@ -19,7 +19,7 @@ export default function SignupPage() {
         {fields.map((f, i) => <Field key={i} label={f} />)}
 
         <View style={{ paddingTop: 15, alignItems: 'center' }}>
-          <Button title='Create my account' color={'orange'} />
+          <Button title='Create my account' color={'orange'} onPress={() => navigation.popTo('login')} />
         </View>
       </View>
     </View>
